@@ -6,16 +6,10 @@ pipeline {
     }
     
     stages {
-        stage('Build') {
-            steps {
-                dir("server/"){
-                    sh 'mvn install -DskipTests'
-                }
-            }
-        }
-        stage('Testing Environment') {
+        stage('Build and test') {
             steps {
                 dir("server/") {
+                    sh 'mvn install -DskipTests'
                     sh 'mvn test -Dtest=ControllerAndServiceSuite'
                     sh 'mvn test -Dtest=IntegrationSuite'
                 }
