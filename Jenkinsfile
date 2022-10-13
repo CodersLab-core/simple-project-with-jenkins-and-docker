@@ -9,9 +9,7 @@ pipeline {
         stage('Build and test') {
             steps {
                 dir("server/") {
-                    sh 'mvn install -DskipTests'
-                    sh 'mvn test -Dtest=ControllerAndServiceSuite'
-                    sh 'mvn test -Dtest=IntegrationSuite'
+                    sh 'mvn install'
                 }
             }
         }
